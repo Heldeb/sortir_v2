@@ -9,11 +9,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PresentationController extends AbstractController
 {
-    /**
-     * @Route("/presentation", name="presentation")
-     */
+    #[Route(path: '/presentation', name: 'main_presentation')]
+
     public function presentation(): Response
     {
-        return $this->render('presentation/presentation.html.twig');
+        return $this->render('main/presentation.html.twig');
     }
 }
