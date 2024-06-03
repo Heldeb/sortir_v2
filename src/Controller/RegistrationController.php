@@ -17,8 +17,8 @@ use function Symfony\Component\String\u;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'app_register')]
-    public function register(Request $request,
+    #[Route('/registration', name: 'app_registration')]
+    public function registration(Request $request,
                              UserPasswordHasherInterface $userPasswordHasher,
                              Security $security,
                              EntityManagerInterface $entityManager): Response
@@ -48,7 +48,7 @@ class RegistrationController extends AbstractController
             return $security->login($user, AppAuthenticator::class, 'main');
         }
 
-        return $this->render('utilisateurs/register.html.twig', [
+        return $this->render('utilisateurs/registration.html.twig', [
             'registrationForm' => $form,
         ]);
     }
