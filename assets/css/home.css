@@ -1,0 +1,24 @@
+body {
+    background-color: darkslategrey;
+    font-family: "American Typewriter";
+}
+
+h1 {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.carousel-container {
+    box-shadow: darkslategrey;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+footer {
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+    width: 100%;
+}
