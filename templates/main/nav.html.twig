@@ -1,7 +1,7 @@
 <div class="navbar-container">
     <nav class="navbar">
         <div class="navbar-brand">
-            <img src="/assets/img/activites/{{ asset('img/logo/logo.png') }}" alt="Logo">
+            <img src="{{ asset('img/logo/logo.png') }}" alt="Notre logo !">
         </div>
 
         <ul>
@@ -10,7 +10,7 @@
 
             <li><a href="{{ path('main_home') }}" title="Accueil">Accueil</a></li>
             {# <a href="{{ path('main_home') }}" title="Accueil">Accueil</a></li> #}
-            <li><a href="{{ path('sortie_list') }}" title="Liste des activités">Sorties</a></li>
+            <li><a href="{{ path('vue_sorties') }}" title="Liste des activités">Sorties</a></li>
             <li><a href="{{ path('main_presentation') }}" title="Présentation">Présentation</a></li>
 
             {# visible après enregistrement #}
@@ -22,8 +22,8 @@
                 {# visible par l'administrateur #}
 
                 {% if is_granted("ROLE_ADMIN") %}
-                <li><a href="{{ path('/gestion_villes') }}" title="Villes">Villes</a></li>
-                <li><a href="{{ path('/gestion_sites') }}" title="Sites">Sites</a></li>
+                <li><a href="{{ path('gestion_villes') }}" title="Villes">Villes</a></li>
+                <li><a href="{{ path('gestion_sites') }}" title="Sites">Sites</a></li>
 
             {% endif %}
 

@@ -9,9 +9,9 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class SortiesController extends AbstractController
 {
-    #[Route('/sorties', name: 'sorties_')]
+    #[Route('/sorties', name: 'vue_sorties')]
 
-    public function list(SortieRepository $sortieRepository): Response
+    public function sorties(SortieRepository $sortieRepository): Response
     {
         $sorties = $sortieRepository->findAll();
 
