@@ -19,4 +19,5 @@ class SortiesController extends AbstractController
             'sorties' => $sorties
         ]);
     }
+
 }
