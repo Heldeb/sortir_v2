@@ -4,8 +4,8 @@
     background-size: cover;
     background-position: center;
     box-shadow: 4px 5px 4px darkorange;
-    padding: 10px 0;
     border-radius: 20px;
+    padding: 10px 20px;
 }
 
 .navbar .container {
@@ -16,9 +16,9 @@
 }
 
 .navbar-brand {
+    margin-right: auto;
     display: flex;
     align-items: center;
-
 }
 
 .navbar-brand img {
@@ -39,10 +39,12 @@
 
 .nav-item {
     margin-right: 10px;
+    color: black;
 }
 
 .nav-link {
-    color: #fff;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: darkorange;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.01s ease;
@@ -50,6 +52,7 @@
     align-items: center;
     height: 100%;
 }
+
 
 .nav-link:hover {
     color: darkslategrey;
