@@ -2,14 +2,19 @@
 
 {% block title %}Register{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+{% endblock %}
+
 {% block body %}
-    <h1>Register</h1>
+    <h1>S'inscrire</h1>
 
     {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
     {{ form_widget(registrationForm) }}
 
-    <button type="submit" class="btn">Register</button>
+    <button type="submit" class="btn">Lets' Go ! </button>
     {{ form_end(registrationForm) }}
 {% endblock %}
