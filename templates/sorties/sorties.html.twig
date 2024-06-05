@@ -1,43 +1,46 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Notre sélection d'activités !{% endblock %}
+{% block title %}{{ parent() }} | Notre sélection, pour vous !{% endblock %}
 
 {% block body %}
 
-    <h1>Notre sélection, pour vous !</h1>
+    <main>
+        <h1>Notre sélection, pour vous !</h1>
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Rechercher
-    </button>
+        {# ****************************** Filtres ****************************** #}
 
-    <table>
-        <thead>
-        <tr>
-            <th>Nom de la sortie</th>
-            <th>Date de la sortie</th>
-            <th>Clôture</th>
-            <th>Inscrits/places</th>
-            <th>Etat</th>
-            <th>Inscrit</th>
-            <th>Organisateur</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for sortie in sorties %}
+        <button class="btn btn-lg btn-primary" type="submit">
+            Rechercher
+        </button>
+
+        {# ****************************** Tableau ****************************** #}
+        <table>
+            <thead>
             <tr>
-                <td>{{ sortie.nom }}</td>
-                <td>{{ sortie.datedebut | date('d/m/Y') }}</td>
-                <td>{{ sortie.datecloture | date('d/m/Y') }}</td>
-                <td>{{ sortie.nbinscriptionsmax }} / !!!</td>
-                <td>{{ sortie.etat{id} }}</td>
-                <td>!!!!!</td>
-                <td>!!!</td>
-                <td>!!!</td>
+                <th>Nom de la sortie</th>
+                <th>Date de la sortie</th>
+                <th>Clôture</th>
+                <th>Inscrits/places</th>
+                <th>Etat</th>
+                <th>Inscrit</th>
+                <th>Organisateur</th>
+                <th>Actions</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+            </thead>
+            <tbody>
+            {% for sortie in sorties %}
+                <tr>
+                    <td>{{ sortie.nom }}</td>
+                    <td>{{ sortie.datedebut | date('d/m/Y') }}</td>
+                    <td>{{ sortie.datecloture | date('d/m/Y') }}</td>
+                    <td>{{ sortie.nbinscriptionsmax }} / !!!</td>
+                    <td>{{ sortie.etat{id} }}</td>
+                    <td>!!!!!</td>
+                    <td>!!!</td>
+                    <td>!!!</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </main>
 
 {% endblock %}

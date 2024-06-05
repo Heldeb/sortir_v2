@@ -19,4 +19,22 @@ class SortiesController extends AbstractController
             'sorties' => $sorties
         ]);
     }
+
+    #[Route('/sorties/create', name: 'creation_sorties')]
+    public function creation(Request $request, EntityManagerInterface $entityManager): Response
+    {
+
+        $sortie = new Sortie();
+        $sortieForm = $this->createForm(SortieType::class, $sortie);
+        $sortieForm->handleRequest($request);
+
+        if ($sortieForm->isSubmitted() && $sortieForm->isValid()) {
+            $entityManager->persist($sortie);
+            $entityManager->flush();
+        }
+        return $this->render('sorties/create.html.twig', [
+            'sortieForm' => $sortieForm->createView()
+        ]);
+    }
 }
+
