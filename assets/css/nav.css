@@ -16,9 +16,7 @@
 }
 
 .navbar-brand {
-    margin-right: auto;
-    display: flex;
-    align-items: center;
+  padding-bottom: 120px !important;
 }
 
 .navbar-brand img {
@@ -26,26 +24,17 @@
     max-height: 120px;
     border-radius: 100px;
     margin-left: 20px;
-}
-
-.navbar-nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    height: 100%;
+    margin-top: 20px !important;
 }
 
 .nav-item {
     margin-right: 10px;
-    color: black;
+    color: whitesmoke !important;
 }
 
 .nav-link {
     font-family: 'Comic Sans MS', cursive, sans-serif;
     color: darkorange;
-    text-decoration: none;
     font-weight: bold;
     transition: color 0.01s ease;
     display: flex;
@@ -58,3 +47,4 @@
     color: darkslategrey;
     opacity: 0.8;
 }
+

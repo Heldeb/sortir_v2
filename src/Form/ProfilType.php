@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Participant;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,10 +19,10 @@ class ProfilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('pseudo', TextType::class,[
-                'constraints'=>[
+            ->add('pseudo', TextType::class, [
+                'constraints' => [
                     new NotBlank([
-                        'message'=>'Entrez un pseudo',
+                        'message' => 'Entrez un pseudo',
                     ]),
                     new Length([
                         'min' => 3,
@@ -43,15 +44,16 @@ class ProfilType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('plainPassword',PasswordType::class,[
-                'mapped'=>false,
-                'constraints'=>[
-                    new NotBlank(['message'=> 'Entrez un mot de passe',
-                        ]),
+            ->add('plainPassword', PasswordType::class, [
+                'mapped' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Entrez un mot de passe',
+                    ]),
                     new Length([
-                        'min'=>6,
-                        'minMessage'=> 'Votre mot de passe doit être supérieur à {{ limit }} caractères',
-                        'max'=>4096,
+                        'min' => 6,
+                        'minMessage' => 'Votre mot de passe doit être supérieur à {{ limit }} caractères',
+                        'max' => 4096,
                     ]),
                 ],
             ])
@@ -63,7 +65,10 @@ class ProfilType extends AbstractType
                     ]),
                 ],
             ])
-        ;
+            ->add('photo', FileType::class, [
+                'label' => 'Photo',
+                'required' => false,
+            ])
         ;
     }
 

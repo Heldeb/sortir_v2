@@ -13,7 +13,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: ParticipantRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['pseudo'])]
 #[UniqueEntity(fields: ['pseudo'], message: 'There is already an account with this pseudo')]
-
 class Participant implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -49,6 +48,9 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinColumn(nullable: false)]
     private ?Site $site = null;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $photo;
+
     /**
      * @var Collection<int, Inscription>
      */
@@ -59,7 +61,6 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->inscription = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -133,7 +134,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setPassword(string $password): static
     {
-        $this-> password = $password;
+        $this->password = $password;
 
         return $this;
     }
@@ -174,6 +175,18 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, Inscription>
      */
@@ -200,23 +213,24 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
                 $inscription->setParticipant(null);
             }
         }
+
         return $this;
     }
 
     public function getRoles(): array
     {
         $roles[] = 'ROLE_USER';
+
         return array_unique($roles);
     }
 
-    public function eraseCredentials():void
+    public function eraseCredentials(): void
     {
         // TODO: Implement eraseCredentials() method.
     }
 
     public function getUserIdentifier(): string
     {
-        return(string) $this->pseudo;
+        return (string) $this->pseudo;
     }
-
 }

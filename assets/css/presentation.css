@@ -8,7 +8,7 @@ body {
     background-image: url('../../assets/img/activites/friends.jpg');
     background-size: cover;
     background-position: center;
-    box-shadow: 4px 5px 4px burlywood;
+    box-shadow: 10px 10px 10px dimgrey;
     padding: 0px 0;
     border-radius: 20px;
 }
@@ -42,11 +42,12 @@ body {
 }
 
 .nav-item {
+    color: whitesmoke;
     margin-right: 5px;
 }
 
 .nav-link {
-    color: #fff;
+    color:whitesmoke !important;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.01s ease;
@@ -78,13 +79,14 @@ h2 {
 
 
 ul {
+    color: whitesmoke !important;
     list-style-type: none;
     padding: 0;
 }
 
 li {
     background: darkslategrey;
-    color: white;
+    color: white !important;
     margin: 10px 0;
     padding: 10px;
     border-radius: 10px;
@@ -107,7 +109,7 @@ a.btn-primary {
     display: block;
     width: fit-content;
     margin: 0 auto;
-    margin-bottom: 80px ;
+    margin-bottom: 5px ;
 
 }
 

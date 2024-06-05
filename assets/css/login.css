@@ -4,6 +4,7 @@ form {
 }
 
 label {
+    color: whitesmoke;
     display: block;
     margin-bottom: 5px;
 }
@@ -22,9 +23,15 @@ input[type="password"] {
 button {
     display: block;
     width: 100%;
-    background-color: darkorange;
+    background-color: darkorange !important;
     color: white;
     border: none;
     padding: 10px;
     border-radius: 5px;
+}
+
+
+button:hover {
+    color: darkorange !important;
+   background-color: darkslategrey !important;
 }
