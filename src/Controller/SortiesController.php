@@ -13,7 +13,7 @@ class SortiesController extends AbstractController
 
     public function sorties(SortieRepository $sortieRepository): Response
     {
-        $sorties = $sortieRepository->findBySite();
+        $sorties = $sortieRepository->findAll();
 
         return $this->render('sorties/sorties.html.twig', [
             'sorties' => $sorties
