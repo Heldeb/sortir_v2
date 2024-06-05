@@ -46,28 +46,17 @@ class SortieType extends AbstractType
             ->add('descriptioninfos', TextareaType::class,[
                 'label'=>'Description et infos'
             ])
-            ->add('urlPhoto')
             ->add('lieu', EntityType::class, [
                 'class' => Lieu::class,
-                'choice_label' => 'nom',
+                'choice_label' => 'nom_lieu',
             ])
             ->add('site', EntityType::class, [
                 'class' => Site::class,
                 'choice_label' => 'nom',
             ])
-            ->add('inscription', EntityType::class, [
-                'class' => Inscription::class,
-                'choice_label' => 'nom',
-            ])
-            ->add('etat', ChoiceType::class, [
-                'choices'=>[
-                    'Créée'=>'Créée',
-                    'Ouverte'=>'Ouverte',
-                    'Clôturée'=>'Cloturée',
-                    'Activité en cours'=>'Activité en cours',
-                    'Passée'=>'Passée',
-                    'Annulée'=>'Annulée'
-                ]
+            ->add('etat', EntityType::class, [
+                'class'=>Etat::class,
+                'choice_label'=>'libelle'
             ])
         ;
     }

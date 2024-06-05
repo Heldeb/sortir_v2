@@ -32,7 +32,7 @@ class Sortie
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $descriptioninfos = null;
 
-    #[ORM\Column(length: 250)]
+    #[ORM\Column(length: 250,nullable: true)]
     private ?string $urlPhoto = null;
 
     #[ORM\ManyToOne(inversedBy: 'sorties')]

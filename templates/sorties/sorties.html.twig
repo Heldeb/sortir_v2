@@ -3,6 +3,14 @@
 
 {% block body %}
 
+    {# read and display all flash messages #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
     <main>
         <h1>Notre sélection, pour vous !</h1>
 
@@ -39,6 +47,8 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <li><a href="{{ path('creation_sorties') }}" title="créer une sortie">Créer une sortie</a></li>
 
         {# -------------------- Filtrer par site -------------------- #}
         {# -------------------- utilise SiteController / SiteRepository / SiteType -------------------- #}
