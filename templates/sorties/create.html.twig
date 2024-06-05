@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    {% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    {% endblock %}
+
     {{ form_start(sortieForm) }}
     {{ form_widget(sortieForm) }}
     <button>Créer une sortie</button>
