@@ -1,0 +1,53 @@
+body {
+    background-color: darkslategrey;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+h1 {
+    color: darkorange;
+    text-align: center;
+    font-size: 3em;
+    text-shadow: 2px 2px black;
+    margin-top: 20px;
+}
+
+form {
+    color: whitesmoke;
+    width: 300px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    background-color: darkorange !important;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+button:hover {
+    color: darkorange !important;
+    background-color: darkslategrey !important;
+}
+
+p {
+    text-align: center;
+    font-size: 1.5em;
+    color: darkslategrey;
+}
