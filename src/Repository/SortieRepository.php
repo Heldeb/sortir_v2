@@ -15,7 +15,7 @@ class SortieRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Sortie::class);
     }
-
+/*
 
 public function findBySite()
 {
@@ -28,5 +28,5 @@ public function findBySite()
     return $qb->getQuery()->getResult();
     }
 
-
+*/
 }

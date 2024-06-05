@@ -6,13 +6,10 @@
     <main>
         <h1>Notre sélection, pour vous !</h1>
 
-        {# ****************************** Filtres ****************************** #}
+        {# -------------------- Afficher le tableau sans les filtres -------------------- #}
+        {# -------------------- utilise SortieController / SortieRepository -------------------- #}
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            Rechercher
-        </button>
-
-        {# ****************************** Tableau ****************************** #}
+        <h2>Toutes les sorties que nous organisons :</h2>
         <table>
             <thead>
             <tr>
@@ -26,21 +23,35 @@
                 <th>Actions</th>
             </tr>
             </thead>
+
             <tbody>
-            {% for sortie in sorties %}
+                {% for sortie in sorties %}
                 <tr>
                     <td>{{ sortie.nom }}</td>
                     <td>{{ sortie.datedebut | date('d/m/Y') }}</td>
                     <td>{{ sortie.datecloture | date('d/m/Y') }}</td>
                     <td>{{ sortie.nbinscriptionsmax }} / !!!</td>
-                    <td>{{ sortie.etat{id} }}</td>
-                    <td>!!!!!</td>
+                    <td>!!!</td>
+                    <td>!!!</td>
                     <td>!!!</td>
                     <td>!!!</td>
                 </tr>
-            {% endfor %}
+                {% endfor %}
             </tbody>
         </table>
-    </main>
 
+        {# -------------------- Filtrer par site -------------------- #}
+        {# -------------------- utilise SiteController / SiteRepository / SiteType -------------------- #}
+
+        {#
+        <h2>Filtrer les sorties :</h2>
+
+        <button class="btn btn-lg btn-primary" type="submit">
+            Rechercher
+        </button>
+
+            {# rechercher si la personne connectée est dans les participants #}
+                {# N'affiche que si c'est publié ou si l'on en est le owner #}
+
+    </main>
 {% endblock %}
