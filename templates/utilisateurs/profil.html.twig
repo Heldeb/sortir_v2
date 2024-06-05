@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon profil!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/profil.css') }}">
+{% endblock %}
 
 {% block body %}
     <style>
@@ -11,14 +13,18 @@
     <div class="example-wrapper">
         <h1>Mon profil </h1>
 
-        {{ form_errors(participantForm) }}
+        {% if app.user.photo %}
+            <img src="{{ asset('uploads/photos/' ~ app.user.photo) }}" alt="Photo de profil">
+        {% endif %}
 
+        {{ form_errors(participantForm) }}
         {{ form_start(participantForm) }}
         {{ form_widget(participantForm) }}
-
-        <button type="submit" class="btn">Register</button>
-        <button type="reset" class="btn">Annuler</button>
         {{ form_end(participantForm) }}
+
+        <div class="button-container">
+            <button type="submit" class="btn">Enregistrer</button>
+            <button type="reset" class="btn">Annuler</button>
+        </div>
     </div>
 {% endblock %}
-
