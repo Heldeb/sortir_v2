@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-    color: darkorange !important;
+    color: darkorange;
     text-align: center;
     font-size: 3em;
     text-shadow: 2px 2px black;
@@ -32,24 +32,22 @@ input[type="password"] {
 
 button {
     display: block;
+    width: 100%;
     background-color: darkorange !important;
-    color: white !important;
-    padding: 5px !important;
-    border-radius: 5px ;
-    margin-bottom: 10px !important;
-
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 
+button:hover {
+    color: darkorange !important;
+    background-color: darkslategrey !important;
+}
 
 p {
     text-align: center;
     font-size: 1.5em;
     color: darkslategrey;
-}
-
-
-button:hover {
-    background-color: darkslategrey;
-    color: white;
 }
