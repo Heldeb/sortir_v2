@@ -22,8 +22,8 @@
                 {# visible par l'administrateur #}
 
                 {% if is_granted("ROLE_ADMIN") %}
-                <li><a href="{{ path('gestion_villes') }}" title="Villes">Villes</a></li>
-                <li><a href="{{ path('gestion_sites') }}" title="Sites">Sites</a></li>
+                <li><a href="{{ path('main_villes') }}" title="Villes">Villes</a></li>
+                <li><a href="{{ path('main_sites') }}" title="Sites">Sites</a></li>
 
             {% endif %}
 
