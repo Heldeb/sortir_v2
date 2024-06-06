@@ -38,6 +38,9 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $picture = null;
+
     #[ORM\Column]
     private ?bool $administrateur = null;
 
@@ -47,9 +50,6 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'participants')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Site $site = null;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $photo;
 
     /**
      * @var Collection<int, Inscription>
@@ -61,6 +61,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->inscription = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -134,7 +135,19 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setPassword(string $password): static
     {
-        $this->password = $password;
+        $this-> password = $password;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }
@@ -175,18 +188,6 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPhoto(): ?string
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto(?string $photo): self
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Inscription>
      */
@@ -213,14 +214,12 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
                 $inscription->setParticipant(null);
             }
         }
-
         return $this;
     }
 
     public function getRoles(): array
     {
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
 
@@ -233,4 +232,5 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->pseudo;
     }
+
 }
