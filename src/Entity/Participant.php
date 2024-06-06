@@ -205,6 +205,10 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->pseudo;
     }
+    public function __toString(): string
+    {
+        return $this->getPseudo();
+    }
 
     /**
      * @return Collection<int, Sortie>

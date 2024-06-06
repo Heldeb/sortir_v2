@@ -45,6 +45,7 @@ class SortiesController extends AbstractController
         if ($sortieForm->isSubmitted() && $sortieForm->isValid()) {
             $sortie->setLieu($lieuRepository ->find($sortie->getLieu()-> getId()));
             $sortie->setEtat($etatRepository ->find($sortie->getEtat()->getId()));
+            $sortie->setOrganisateur($this->getUser());
 
 
             $entityManager->persist($sortie);
