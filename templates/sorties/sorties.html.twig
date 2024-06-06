@@ -3,7 +3,6 @@
 
 {% block body %}
 
-
     {# read and display all flash messages #}
     {% for label, messages in app.flashes %}
         {% for message in messages %}
@@ -26,7 +25,7 @@
                 <th>Date de la sortie</th>
                 <th>Clôture</th>
                 <th>Inscrits/places</th>
-
+                <th>Etat</th>
                 <th>Inscrit</th>
                 <th>Organisateur</th>
                 <th>Actions</th>
@@ -42,13 +41,15 @@
                     <td>!!!!!</td>
                     <td>!!!!!</td>
                     <td>!!!</td>
+                    <td><a{#  href="{{ path('app_profil_show'}}" title="afficher le profil d'un utilisateur"#}>{{ sortie.organisateur }}</a></td>
+                    <td>!!!</td>
                     <td> <a href="{{ path('inscription_sortie', { 'id': sortie.id }) }}" class="btn btn-primary">S'inscrire</a> </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        <li><a href="{{ path('creation_sorties') }}" title="créer une sortie">Créer une sortie</a></li>
+        <button><a href="{{ path('creation_sorties') }}" title="créer une sortie">Créer une sortie</a></button>
 
         {# -------------------- Filtrer par site -------------------- #}
         {# -------------------- utilise SiteController / SiteRepository / SiteType -------------------- #}

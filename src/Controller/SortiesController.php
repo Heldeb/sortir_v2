@@ -59,9 +59,5 @@ class SortiesController extends AbstractController
 
     }
 
-
-    private function getDoctrine()
-    {
-    }
 }
 

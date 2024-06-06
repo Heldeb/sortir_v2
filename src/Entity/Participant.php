@@ -38,9 +38,6 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $picture = null;
-
     #[ORM\Column]
     private ?bool $administrateur = null;
 
@@ -51,15 +48,18 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinColumn(nullable: false)]
     private ?Site $site = null;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $photo;
+
     /**
-     * @var Collection<int, Inscription>
+     * @var Collection<int, Sortie>
      */
-    #[ORM\OneToMany(targetEntity: Inscription::class, mappedBy: 'participant')]
-    private Collection $inscription;
+    #[ORM\OneToMany(targetEntity: Sortie::class, mappedBy: 'organisateur')]
+    private Collection $sorties;
 
     public function __construct()
     {
-        $this->inscription = new ArrayCollection();
+        $this->sorties = new ArrayCollection();
     }
 
 
@@ -135,19 +135,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setPassword(string $password): static
     {
-        $this-> password = $password;
-
-        return $this;
-    }
-
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(?string $picture): self
-    {
-        $this->picture = $picture;
+        $this->password = $password;
 
         return $this;
     }
@@ -188,38 +176,23 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Inscription>
-     */
-    public function getInscription(): Collection
+    public function getPhoto(): ?string
     {
-        return $this->inscription;
+        return $this->photo;
     }
 
-    public function addInscription(Inscription $inscription): static
+    public function setPhoto(?string $photo): self
     {
-        if (!$this->inscription->contains($inscription)) {
-            $this->inscription->add($inscription);
-            $inscription->setParticipant($this);
-        }
+        $this->photo = $photo;
 
         return $this;
     }
 
-    public function removeInscription(Inscription $inscription): static
-    {
-        if ($this->inscription->removeElement($inscription)) {
-            // set the owning side to null (unless already changed)
-            if ($inscription->getParticipant() === $this) {
-                $inscription->setParticipant(null);
-            }
-        }
-        return $this;
-    }
 
     public function getRoles(): array
     {
         $roles[] = 'ROLE_USER';
+
         return array_unique($roles);
     }
 
@@ -233,4 +206,33 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->pseudo;
     }
 
+    /**
+     * @return Collection<int, Sortie>
+     */
+    public function getSorties(): Collection
+    {
+        return $this->sorties;
+    }
+
+    public function addSorty(Sortie $sorty): static
+    {
+        if (!$this->sorties->contains($sorty)) {
+            $this->sorties->add($sorty);
+            $sorty->setOrganisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSorty(Sortie $sorty): static
+    {
+        if ($this->sorties->removeElement($sorty)) {
+            // set the owning side to null (unless already changed)
+            if ($sorty->getOrganisateur() === $this) {
+                $sorty->setOrganisateur(null);
+            }
+        }
+
+        return $this;
+    }
 }
