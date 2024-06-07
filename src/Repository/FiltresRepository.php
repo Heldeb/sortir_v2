@@ -16,6 +16,14 @@ class FiltresRepository extends ServiceEntityRepository
         parent::__construct($registry, Filtres::class);
     }
 
+    public function findBySite(PropertySearch $pSearch)
+    {
+        $search = $pSearch->getRecherche();
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->where('p.nom LIKE :search')
+            ->setParameter('search','%'.$search.'%')->getQuery();
+        return $queryBuilder->getResult();
+    }
     //    /**
     //     * @return Filtres[] Returns an array of Filtres objects
     //     */

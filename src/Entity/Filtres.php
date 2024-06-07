@@ -36,6 +36,7 @@ class Filtres
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $datecloture = null;
 
+    /*
     #[ORM\Column(nullable: true)]
     private ?bool $organisateur = null;
 
@@ -48,6 +49,8 @@ class Filtres
 
     #[ORM\Column(nullable: true)]
     private ?bool $sortiePassee = null;
+
+    */
 
     public function getId(): ?int
     {
@@ -98,7 +101,7 @@ class Filtres
     {
         $this->datecloture = $datecloture;
     }
-
+/*
     public function getOrganisateur(): ?bool
     {
         return $this->organisateur;
@@ -138,5 +141,5 @@ class Filtres
     {
         $this->sortiePassee = $sortiePassee;
     }
-
+*/
 }

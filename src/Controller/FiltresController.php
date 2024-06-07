@@ -13,11 +13,6 @@ use Symfony\Component\Routing\Attribute\Route;
 class FiltresController extends AbstractController
 {
 
-
-    /* -------------------- FILTRER -------------------- */
-
-    private $createForm;
-
     #[Route('/sorties/filtrer', name: 'filtrer_sorties')]
 
     public function filter(Request $request,

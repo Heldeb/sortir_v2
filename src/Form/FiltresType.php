@@ -42,7 +42,9 @@ class FiltresType extends AbstractType
                 'html5' => true,
                 'widget' => 'single_text',
                 'required' => false,
-            ])
+            ]);
+
+            /*
             ->add('organisateur',CheckboxType::class,[
                 'label'=>'Sorties dont je suis l\'organisateur/trice',
                 'required' => false
@@ -59,7 +61,7 @@ class FiltresType extends AbstractType
                 'label'=>'Sorties passées',
                 'required' => false
             ])
-        ;
+        ; */
     }
 
     public function configureOptions(OptionsResolver $resolver): void
