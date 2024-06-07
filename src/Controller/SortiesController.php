@@ -3,14 +3,20 @@
 namespace App\Controller;
 
 use App\Entity\Etat;
+use App\Entity\Filtres;
 use App\Entity\Lieu;
+use App\Entity\Participant;
 use App\Entity\Sortie;
+use App\Form\RegistrationFormType;
 use App\Form\SortieType;
 use App\Repository\EtatRepository;
+use App\Repository\FiltresRepository;
 use App\Repository\LieuRepository;
 use App\Repository\ParticipantRepository;
 use App\Repository\SiteRepository;
 use App\Repository\SortieRepository;
+use App\Repository\VilleRepository;
+use App\Security\AppAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +25,9 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class SortiesController extends AbstractController
 {
+
+    /* -------------------- TABLEAU / SANS FILTRE -------------------- */
+
     #[Route('/sorties', name: 'vue_sorties')]
     public function sorties(SortieRepository $sortieRepository): Response
     {
@@ -28,6 +37,9 @@ class SortiesController extends AbstractController
             'sorties' => $sorties
         ]);
     }
+
+/* -------------------- CREATE -------------------- */
+
 
     #[Route('/sorties/create', name: 'creation_sorties')]
     public function creation(Request                $request,
@@ -45,7 +57,6 @@ class SortiesController extends AbstractController
         if ($sortieForm->isSubmitted() && $sortieForm->isValid()) {
             $sortie->setLieu($lieuRepository ->find($sortie->getLieu()-> getId()));
             $sortie->setEtat($etatRepository ->find($sortie->getEtat()->getId()));
-            $sortie->setOrganisateur($this->getUser());
 
 
             $entityManager->persist($sortie);

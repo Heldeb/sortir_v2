@@ -14,48 +14,69 @@ class Filtres
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $site_id = null;
+    #[Assert\Choice(['Nantes', 'Rennes'])]
+    #[ORM\Column(nullable: false)]
+    private ?string $site;
 
+    #[Assert\NotBlank("search")]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Your first name must be at least {{ limit }} characters long',
+        maxMessage: 'Your first name cannot be longer than {{ limit }} characters',
+    )]
     #[ORM\Column(length: 30, nullable: true)]
-    private ?string $nom_lieu = null;
+    private ?string $contient = null;
+    //private ?string $nom_lieu = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $datedebut = null;
 
+    #[Assert\GreaterThanOrEqual('datedebut')]
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $datecloture = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $inscription_id = null;
+    private ?bool $organisateur = null;
+
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $inscrit = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $nonInscrit = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $sortiePassee = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getSite_id(): ?int
+    public function setId(?int $id): void
     {
-        return $this->site_id;
+        $this->id = $id;
     }
 
-    public function setSite_id(int $site_id): static
+    public function getSite(): ?int
     {
-        $this->site_id = $site_id;
-
-        return $this;
+        return $this->site;
     }
 
-    public function getNom_lieu(): ?string
+    public function setSite(?int $site): void
     {
-        return $this->nom_lieu;
+        $this->site = $site;
     }
 
-    public function setNom_lieu(string $nom_lieu): static
+    public function getContient(): ?string
     {
-        $this->nom_lieu = $nom_lieu;
+        return $this->contient;
+    }
 
-        return $this;
+    public function setContient(?string $contient): void
+    {
+        $this->contient = $contient;
     }
 
     public function getDatedebut(): ?\DateTimeInterface
@@ -63,11 +84,9 @@ class Filtres
         return $this->datedebut;
     }
 
-    public function setDatedebut(\DateTimeInterface $datedebut): static
+    public function setDatedebut(?\DateTimeInterface $datedebut): void
     {
         $this->datedebut = $datedebut;
-
-        return $this;
     }
 
     public function getDatecloture(): ?\DateTimeInterface
@@ -75,22 +94,49 @@ class Filtres
         return $this->datecloture;
     }
 
-    public function setDatecloture(?\DateTimeInterface $datecloture): static
+    public function setDatecloture(?\DateTimeInterface $datecloture): void
     {
         $this->datecloture = $datecloture;
-
-        return $this;
     }
 
-    public function getInscription_id(): ?int
+    public function getOrganisateur(): ?bool
     {
-        return $this->inscription_id;
+        return $this->organisateur;
     }
 
-    public function setInscription_id(?int $inscription_id): static
+    public function setOrganisateur(?bool $organisateur): void
     {
-        $this->inscription_id = $inscription_id;
-
-        return $this;
+        $this->organisateur = $organisateur;
     }
+
+    public function getInscrit(): ?bool
+    {
+        return $this->inscrit;
+    }
+
+    public function setInscrit(?bool $inscrit): void
+    {
+        $this->inscrit = $inscrit;
+    }
+
+    public function getNonInscrit(): ?bool
+    {
+        return $this->nonInscrit;
+    }
+
+    public function setNonInscrit(?bool $nonInscrit): void
+    {
+        $this->nonInscrit = $nonInscrit;
+    }
+
+    public function getSortiePassee(): ?bool
+    {
+        return $this->sortiePassee;
+    }
+
+    public function setSortiePassee(?bool $sortiePassee): void
+    {
+        $this->sortiePassee = $sortiePassee;
+    }
+
 }

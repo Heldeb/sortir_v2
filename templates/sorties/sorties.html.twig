@@ -14,8 +14,7 @@
     <main>
         <h1>Notre sélection, pour vous !</h1>
 
-        {# -------------------- Afficher le tableau sans les filtres -------------------- #}
-        {# -------------------- utilise SortieController / SortieRepository -------------------- #}
+        {# -------------------- TABLEAU (SANS FILTRE) -------------------- #}
 
         <h2>Toutes les sorties que nous organisons :</h2>
         <table>
@@ -31,39 +30,28 @@
                 <th>Actions</th>
             </tr>
             </thead>
+
             <tbody>
-            {% for sortie in sorties %}
+                {% for sortie in sorties %}
                 <tr>
                     <td>{{ sortie.nom }}</td>
                     <td>{{ sortie.datedebut | date('d/m/Y') }}</td>
                     <td>{{ sortie.datecloture | date('d/m/Y') }}</td>
                     <td>{{ sortie.nbinscriptionsmax }} / !!!</td>
-                    <td>!!!!!</td>
-                    <td>!!!!!</td>
                     <td>!!!</td>
-                    <td><a{#  href="{{ path('app_profil_show'}}" title="afficher le profil d'un utilisateur"#}>{{ sortie.organisateur }}</a></td>
                     <td>!!!</td>
-                    <td> <a href="{{ path('inscription_sortie', { 'id': sortie.id }) }}" class="btn btn-primary">S'inscrire</a> </td>
+                    <td>!!!</td>
+                    <td><a{#  href="{{ path('app_profil_show'}}" title="afficher le profil d'un utilisateur"#}>{{ sortie.organisateur }}</a>
+                    <a href="{{ path('inscription_sortie', { 'id': sortie.id }) }}" class="btn btn-primary">S'inscrire</a> </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
+        {# -------------------- BOUTONS -------------------- #}
+
         <button><a href="{{ path('creation_sorties') }}" title="créer une sortie">Créer une sortie</a></button>
-
-        {# -------------------- Filtrer par site -------------------- #}
-        {# -------------------- utilise SiteController / SiteRepository / SiteType -------------------- #}
-
-        {#
-        <h2>Filtrer les sorties :</h2>
-
-        <button class="btn btn-lg btn-primary" type="submit">
-            Rechercher
-        </button>
-
-            {# rechercher si la personne connectée est dans les participants #}
-                {# N'affiche que si c'est publié ou si l'on en est le owner #}
+        <button><a href="{{ path('filtrer_sorties') }}" title="rechercher">Rechercher une sortie</a></li>
 
     </main>
-
 {% endblock %}
